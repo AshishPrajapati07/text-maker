@@ -3,6 +3,8 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import Text from './Components/Text';
 import Alert from './Components/Alert';
+import About from './Components/About';
+import { BrowserRouter, Route, Routes  } from "react-router-dom";
 
 
 function App() {
@@ -18,6 +20,7 @@ function App() {
       setAlert(null);
     }, 2000);
   }
+
 
   const togglemode = () => {
     if (mode === "light") {
@@ -40,9 +43,14 @@ function App() {
   }
   return (
     <>
-      <Navbar logoName="Text Maker" mode={mode} togglemode={togglemode} />
+      <BrowserRouter>
+      <Navbar logoName="Text Maker" mode={mode} togglemode={togglemode}/>
       <Alert alert={alert} />
-      <Text showAlert={showAlert} mode={mode} />
+        <Routes>
+          <Route path='/about' element={<About />}></Route>
+          <Route path='/' element={<Text showAlert={showAlert} mode={mode} />}></Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

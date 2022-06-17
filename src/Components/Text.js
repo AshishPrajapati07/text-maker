@@ -6,6 +6,7 @@ import jsPDF from 'jspdf'
 export default function Text(props) {
     const [text, setText] = useState();
     const [preview, previewText] = useState();
+    
 
 
     const UpperCase = () => {
@@ -34,10 +35,10 @@ export default function Text(props) {
         props.showAlert("Text Cleared","success");
     }
 
-    // const HandleExtraSpaces = () => {
-    //     let newtext = preview.split(/[ ]+/);
-    //     previewText(newtext.join(" "))
-    // }
+    const HandleExtraSpaces = () => {
+        let newtext = preview.split(/[ ]+/);
+        previewText(newtext.join(" "))
+    }
 
     const Read = () => {
         var msg = new SpeechSynthesisUtterance();
@@ -75,7 +76,7 @@ export default function Text(props) {
                         <button type='button' className="btn btn-warning my-2 btn-block" onClick={Clear}>Clear Text</button>
                         <button type='button' className="btn btn-warning my-2 btn-block" onClick={Read}>Read And Listen</button>
                         <button type='button' className="btn btn-warning my-2 btn-block" onClick={HandleCopy}>Copy Text form Preview</button>
-                        {/* <div className="btn btn-warning my-4 btn-block" onClick={HandleExtraSpaces}>Remove Extra Spaces</div> */}
+                        <button type='button' className="btn btn-warning my-2 btn-block" onClick={HandleExtraSpaces}>Remove Extra Spaces</button>
                         <button type='button' className="btn btn-warning my-2 btn-block" onClick={HandlePdf}>Make a pdf</button>
                         <button type='button'  className="btn btn-warning my-2 btn-block">Translate the Text</button>
                     </div>
@@ -83,6 +84,10 @@ export default function Text(props) {
                         <h4>PREVIEW</h4>
                         <textarea className="form-control"  id="pbox" rows="20"  value={preview} style={{backgroundColor: props.mode==='light'?'white':'gray', color: props.mode==='light'?'black':'white' }}></textarea>
                     </div>
+                </div>
+                <div className="container my-4">
+                    <h2>Your Text Summary</h2> 
+                    <p>{preview?.split(" ").filter((element)=>{return element.length!==0}).length}:Words And </p>
                 </div>
             </div>
         </>
