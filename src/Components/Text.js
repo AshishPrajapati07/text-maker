@@ -69,7 +69,9 @@ export default function Text(props) {
                 <div className='row'>
                     <div className="mb-3 col-sm-4">
                         <h5>Enter Your Text For design and Utilize</h5>
-                        <textarea className="form-control" id="tbox" rows="20"  style={{backgroundColor: props.mode==='light'?'white':'gray' , color: props.mode==='light'?'black':'white'}} onChange={HandleOnChange} value={text}></textarea>
+                        <textarea className="form-control" id="tbox" rows="17"  style={{backgroundColor: props.mode==='light'?'white':'gray' , color: props.mode==='light'?'black':'white'}} onChange={HandleOnChange} value={text}></textarea>
+                        <h2>Your Text Summary</h2>
+                   <p>{ text ? text.length : 0} characters</p>
                     </div>
                     <div className="mb-2 col-sm-4 d-grid" >
                         <button type='button' className="btn btn-warning my-2 btn-block" onClick={LowerCase}>Convert To LowerCase</button>
@@ -80,8 +82,7 @@ export default function Text(props) {
                         <button type='button' className="btn btn-warning my-2 btn-block" onClick={HandleExtraSpaces}>Remove Extra Spaces</button>
                         <button type='button' className="btn btn-warning my-2 btn-block" onClick={HandlePdf}>Make a pdf</button>
                         <button type='button'  className="btn btn-warning my-2 btn-block">Translate the Text</button>
-                        <h2>Your Text Summary</h2>
-                   <p>{ text ? text.length : 0} characters</p>
+                        
                     </div>
                     <div className="mb-3 col-sm-4">
                         <h4>PREVIEW</h4>
