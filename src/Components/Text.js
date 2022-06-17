@@ -4,6 +4,7 @@ import jsPDF from 'jspdf'
 
 
 export default function Text(props) {
+    
     const [text, setText] = useState();
     const [preview, previewText] = useState();
     
@@ -79,6 +80,8 @@ export default function Text(props) {
                         <button type='button' className="btn btn-warning my-2 btn-block" onClick={HandleExtraSpaces}>Remove Extra Spaces</button>
                         <button type='button' className="btn btn-warning my-2 btn-block" onClick={HandlePdf}>Make a pdf</button>
                         <button type='button'  className="btn btn-warning my-2 btn-block">Translate the Text</button>
+                        <h2>Your Text Summary</h2>
+                   <p>{ text ? text.length : 0} characters</p>
                     </div>
                     <div className="mb-3 col-sm-4">
                         <h4>PREVIEW</h4>
@@ -86,8 +89,7 @@ export default function Text(props) {
                     </div>
                 </div>
                 <div className="container my-4">
-                    <h2>Your Text Summary</h2> 
-                    <p>{preview?.split(" ").filter((element)=>{return element.length!==0}).length}:Words And </p>
+                    
                 </div>
             </div>
         </>
